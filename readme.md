@@ -10,3 +10,4 @@ The real inputs are to be placed in a `.txt` file directly inside `input/` with 
 | [Red-Nosed Reports](https://adventofcode.com/2024/day/2)  | [day02.txt](input/samples/day02.txt) | [Day02.cs](Solutions/Day02.cs) |
 | [Mull It Over](https://adventofcode.com/2024/day/3)       | [day03.txt](input/samples/day03.txt) | [Day03.cs](Solutions/Day03.cs) |
 | [Ceres Search](https://adventofcode.com/2024/day/4)       | [day04.txt](input/samples/day04.txt) | [Day04.cs](Solutions/Day04.cs) |
+| [Print Queue](https://adventofcode.com/2024/day/5)        | [day05.txt](input/samples/day05.txt) | [Day05.cs](Solutions/Day05.cs) |

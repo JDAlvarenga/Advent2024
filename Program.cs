@@ -9,5 +9,8 @@
 // Console.WriteLine($"day03_1: {Day03.Part1()}");
 // Console.WriteLine($"day03_2: {Day03.Part2()}");
 
-Console.WriteLine($"day04_1: {Day04.Part1()}");
-Console.WriteLine($"day04_2: {Day04.Part2()}");
+// Console.WriteLine($"day04_1: {Day04.Part1()}");
+// Console.WriteLine($"day04_2: {Day04.Part2()}");
+
+Console.WriteLine($"day05_1: {Day05.Part1()}");
+Console.WriteLine($"day05_2: {Day05.Part2()}");
