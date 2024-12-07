@@ -11,4 +11,5 @@ The real inputs are to be placed in a `.txt` file directly inside `input/` with 
 | [Mull It Over](https://adventofcode.com/2024/day/3)       | [day03.txt](input/samples/day03.txt) | [Day03.cs](Solutions/Day03.cs) |
 | [Ceres Search](https://adventofcode.com/2024/day/4)       | [day04.txt](input/samples/day04.txt) | [Day04.cs](Solutions/Day04.cs) |
 | [Print Queue](https://adventofcode.com/2024/day/5)        | [day05.txt](input/samples/day05.txt) | [Day05.cs](Solutions/Day05.cs) |
-| [Guard Gallivant](https://adventofcode.com/2024/day/6)        | [day06.txt](input/samples/day06.txt) | [Day06.cs](Solutions/Day06.cs) |
+| [Guard Gallivant](https://adventofcode.com/2024/day/6)    | [day06.txt](input/samples/day06.txt) | [Day06.cs](Solutions/Day06.cs) |
+| [Bridge Repair](https://adventofcode.com/2024/day/7)      | [day07.txt](input/samples/day07.txt) | [Day07.cs](Solutions/Day07.cs) |
