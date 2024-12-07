@@ -5,7 +5,7 @@ riderModule.iml
 /_ReSharper.Caches/
 
 .idea/
-
+*.user
 # Advent inputs
 /input/*
 !/input/samples/
