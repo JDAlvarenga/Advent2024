@@ -1,5 +1,4 @@
 using System.Drawing;
-using Advent2024.Solutions;
 
 namespace Advent2024;
 
@@ -13,6 +12,26 @@ public static class Util
             $"{typeof(T).Name.ToLower()}.txt"
         );
         return new StreamReader(path);
+    }
+    
+    public const char Newline = '\n';
+    public static IEnumerable<char> InputChars<T>(bool sample)
+    {
+        using var file = Util.GetInputStream<T>(sample);
+        
+        
+        while (!file.EndOfStream)
+        {
+            var ch = (char)file.Read();
+            if (ch is '\r' or '\n')
+            {
+                while (file.Peek() is '\n' or '\r') file.Read();
+                
+                yield return Newline;
+            }
+            else
+                yield return ch;
+        }
     }
     
     [Flags]
