@@ -1,6 +1,5 @@
 using System.Collections;
-using System.Drawing;
-
+using Point = Advent2024.Util.Point;
 namespace Advent2024.Solutions;
 
 public class Day10
@@ -71,7 +70,7 @@ public class Day10
                 
                 foreach (var direction in AllowedDirections)
                 {
-                    var nextPosition = Util.MovePoint(position, direction);
+                    var nextPosition = position.MoveCopy(direction);
                     if (!map.TryGetValue(nextPosition, out var h) || h != height - 1) continue;
                     
                     if (next is null)
@@ -83,7 +82,7 @@ public class Day10
                 if (next is null) break;
                 
                 height--;
-                Util.MovePoint(ref position, next.Value);
+                position.Move(next.Value);
             }
             
         }
@@ -146,7 +145,7 @@ public class Day10
 
                 foreach (var direction in AllowedDirections)
                 {
-                    var nextPosition = Util.MovePoint(position, direction);
+                    var nextPosition = position.MoveCopy(direction);
                     if (!map.TryGetValue(nextPosition, out var h) || h != height - 1) continue;
                     
                     if (next is null)
@@ -158,7 +157,7 @@ public class Day10
                 if (next is null) break;
                 
                 height--;
-                Util.MovePoint(ref position, next.Value);
+                position.Move(next.Value);
             }
             
         }

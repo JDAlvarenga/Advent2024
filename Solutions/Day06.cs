@@ -1,7 +1,7 @@
-using System.Drawing;
+using Point = Advent2024.Util.Point;
+using Direction = Advent2024.Util.Direction;
 
 namespace Advent2024.Solutions;
-using Direction = Util.Direction;
 
 public class Day06
 {
@@ -113,10 +113,10 @@ public class Day06
         {
             Point front = FrontPosition;
             if (Map(front) is Obstacle) TurnRight();
-            else Util.MovePoint(ref Position, Direction);
+            else Position.Move(Direction);
         }
 
-        public Point FrontPosition => Util.MovePoint(Position, Direction);
+        public Point FrontPosition => Position.MoveCopy(Direction);
         public void TurnRight() => Util.RotateDirection(ref Direction, Direction.East);
         public bool IsPatrolling => Map(Position) is not null;
     }

@@ -1,5 +1,3 @@
-using System.Drawing;
-
 namespace Advent2024;
 
 public static class Util
@@ -68,27 +66,65 @@ public static class Util
         return direction;
     }
 
-    public static Point MovePoint(Point point, in Direction dir, in int spaces = 1)
+    public record struct Point(int X, int Y)
     {
-        MovePoint(ref point, dir, spaces);
-        return point;
-    }
-    public static void MovePoint(ref Point point, in Direction dir, in int spaces = 1)
-    {
-        switch (dir)
+        public static readonly Point Empty = new(0, 0);
+        public void Offset(in Point delta)
         {
-            case Direction.North: point.Offset(0,-spaces); break;
-            case Direction.NorthEast: point.Offset(spaces, -spaces); break;
-            case Direction.East: point.Offset(spaces, 0); break;
-            case Direction.SouthEast: point.Offset(spaces, spaces); break;
-            case Direction.South: point.Offset(0, spaces); break;
-            case Direction.SouthWest: point.Offset(-spaces, spaces); break;
-            case Direction.West: point.Offset(-spaces, 0); break;
-            case Direction.NorthWest: point.Offset(-spaces, -spaces); break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
+            X += delta.X;
+            Y += delta.Y;
+        }
+
+        public void Offset(int deltaX, int deltaY)
+        {
+            X += deltaX;
+            Y += deltaY;
+        }
+
+        public Point MoveCopy(in Direction dir, in int spaces = 1)
+        {
+            var moved = this with { };
+            moved.Move(dir, spaces);
+            return moved;
+        }
+        public void Move(in Direction dir, in int spaces = 1)
+        {
+            switch (dir)
+            {
+                case Direction.North: Offset(0,-spaces); break;
+                case Direction.NorthEast: Offset(spaces, -spaces); break;
+                case Direction.East: Offset(spaces, 0); break;
+                case Direction.SouthEast: Offset(spaces, spaces); break;
+                case Direction.South: Offset(0, spaces); break;
+                case Direction.SouthWest: Offset(-spaces, spaces); break;
+                case Direction.West: Offset(-spaces, 0); break;
+                case Direction.NorthWest: Offset(-spaces, -spaces); break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
+            }
         }
     }
+    // public static Point MovePoint(Point point, in Direction dir, in int spaces = 1)
+    // {
+    //     MovePoint(ref point, dir, spaces);
+    //     return point;
+    // }
+    // public static void MovePoint(ref Point point, in Direction dir, in int spaces = 1)
+    // {
+    //     switch (dir)
+    //     {
+    //         case Direction.North: point.Offset(0,-spaces); break;
+    //         case Direction.NorthEast: point.Offset(spaces, -spaces); break;
+    //         case Direction.East: point.Offset(spaces, 0); break;
+    //         case Direction.SouthEast: point.Offset(spaces, spaces); break;
+    //         case Direction.South: point.Offset(0, spaces); break;
+    //         case Direction.SouthWest: point.Offset(-spaces, spaces); break;
+    //         case Direction.West: point.Offset(-spaces, 0); break;
+    //         case Direction.NorthWest: point.Offset(-spaces, -spaces); break;
+    //         default:
+    //             throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
+    //     }
+    // }
     public static bool IsValidPoint(in Point pos, in int maxX, in int maxY, in int minX = 0, in int minY = 0)
     {
         return pos.Y >= minY && 
