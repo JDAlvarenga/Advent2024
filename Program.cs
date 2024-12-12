@@ -30,5 +30,8 @@
 // Console.WriteLine($"day10_1: {Day10.Part1()}");
 // Console.WriteLine($"day10_2: {Day10.Part2()}");
 
-Console.WriteLine($"day11_1: {Day11.Part1()}");
-Console.WriteLine($"day11_2: {Day11.Part2()}");
+// Console.WriteLine($"day11_1: {Day11.Part1()}");
+// Console.WriteLine($"day11_2: {Day11.Part2()}");
+
+Console.WriteLine($"day12_1: {Day12.Part1()}");
+Console.WriteLine($"day12_2: {Day12.Part2()}");

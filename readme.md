@@ -17,3 +17,4 @@ The real inputs are to be placed in a `.txt` file directly inside `input/` with 
 | [Disk Fragmenter](https://adventofcode.com/2024/day/9)       | [day09.txt](input/samples/day09.txt) | [Day09.cs](Solutions/Day09.cs) |
 | [Hoof It](https://adventofcode.com/2024/day/10)              | [day10.txt](input/samples/day10.txt) | [Day10.cs](Solutions/Day10.cs) |
 | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    | [day11.txt](input/samples/day11.txt) | [Day11.cs](Solutions/Day11.cs) |
+| [Garden Groups](https://adventofcode.com/2024/day/12)        | [day12.txt](input/samples/day12.txt) | [Day12.cs](Solutions/Day12.cs) |
