@@ -19,3 +19,4 @@ The real inputs are to be placed in a `.txt` file directly inside `input/` with 
 | [Plutonian Pebbles](https://adventofcode.com/2024/day/11)    | [day11.txt](input/samples/day11.txt) | [Day11.cs](Solutions/Day11.cs) |
 | [Garden Groups](https://adventofcode.com/2024/day/12)        | [day12.txt](input/samples/day12.txt) | [Day12.cs](Solutions/Day12.cs) |
 | [Claw Contraption](https://adventofcode.com/2024/day/13)     | [day13.txt](input/samples/day13.txt) | [Day13.cs](Solutions/Day13.cs) |
+| [Restroom Redoubt](https://adventofcode.com/2024/day/14)     | [day14.txt](input/samples/day14.txt) | [Day14.cs](Solutions/Day14.cs) |
