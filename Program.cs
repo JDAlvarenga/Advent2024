@@ -39,7 +39,10 @@
 // Console.WriteLine($"day13_1: {Day13.Part1()}");
 // Console.WriteLine($"day13_2: {Day13.Part2()}");
 
-Console.WriteLine($"day14_1: {Day14.Part1()}");
-var time = Day14.Part2V3();
-Console.WriteLine($"day14_2: {time}");
-Day14.ShowAtTime(time);
+// Console.WriteLine($"day14_1: {Day14.Part1()}");
+// var time = Day14.Part2V3();
+// Console.WriteLine($"day14_2: {time}");
+// Day14.ShowAtTime(time);
+
+Console.WriteLine($"day15_1: {Day15.Part1()}");
+Console.WriteLine($"day15_2: {Day15.Part2()}");
