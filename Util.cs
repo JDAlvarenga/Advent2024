@@ -23,7 +23,7 @@ public static class Util
             var ch = (char)file.Read();
             if (ch is '\r' or '\n')
             {
-                while (file.Peek() is '\n' or '\r') file.Read();
+                if (file.Peek() is '\n' or '\r') file.Read();
                 
                 yield return Newline;
             }
