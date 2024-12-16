@@ -1,8 +1,12 @@
+using BenchmarkDotNet.Attributes;
+
 namespace Advent2024.Solutions;
 
-public class Day01
+[ShortRunJob]
+public class Day01: IDay
 {
-    public static int Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false)
     {
         string? line = null;
         var list1 = new List<int>();
@@ -22,7 +26,8 @@ public class Day01
         return list1.Zip(list2, (id1, id2) => int.Abs(id1 - id2)).Sum();
     }
     
-    public static int Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
         string? line = null;
         

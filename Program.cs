@@ -1,48 +1,97 @@
-﻿using Advent2024.Solutions;
+﻿using System.Reflection;
+using Advent2024.Solutions;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Order;
+using BenchmarkDotNet.Reports;
+using BenchmarkDotNet.Running;
+using Spectre.Console;
 
-// Console.WriteLine($"day01_1: {Day01.Part1()}");
-// Console.WriteLine($"day01_2: {Day01.Part2()}");
 
-// Console.WriteLine($"day02_1: {Day02.Part1()}");
-// Console.WriteLine($"day02_2: {Day02.Part2()}");
 
-// Console.WriteLine($"day03_1: {Day03.Part1()}");
-// Console.WriteLine($"day03_2: {Day03.Part2()}");
+List<Type> solutionTypes = Assembly.GetExecutingAssembly().GetTypes()
+    .Where(t => t is { IsClass: true, IsPublic:true, Namespace: "Advent2024.Solutions" } && t.GetInterfaces().Contains(typeof(IDay)))
+    .ToList();
 
-// Console.WriteLine($"day04_1: {Day04.Part1()}");
-// Console.WriteLine($"day04_2: {Day04.Part2()}");
+AnsiConsole.MarkupLine("Advent of Code [yellow bold]2024[/]");
+while (true)
+{
+    var action = PromptAction();
+    if (action == Action.Exit) return;
+    
+    var selected = PromptSolutions(solutionTypes);
+    if (selected.Count == 0) continue; // TODO message canceled no selecttion
+    
+    switch (action)
+    {
+        case Action.ShowResults:
+            
+            var useSample = AnsiConsole.Prompt(
+                new TextPrompt<bool>("Run with sample input?")
+                    .AddChoice(true)
+                    .AddChoice(false)
+                    .DefaultValue(false)
+                    .WithConverter(choice => choice ? "y" : "n"));
+            
+            // Todo add progress
+            var table = new Table()
+                .Title("Results")
+                .RoundedBorder();
+            table.AddColumn(new TableColumn("Day").Centered());
+            table.AddColumn(new TableColumn("Result").Centered());
+            foreach (var solutionClass in selected)
+            {
+                var methods = solutionClass.GetMethods().Where(m => m.Name.StartsWith("Part"));
+                var initiatedObject = Activator.CreateInstance(solutionClass); 
+                foreach (var method in methods)
+                {
+                    try
+                    {
+                        var result = method.Invoke(initiatedObject, [useSample]);
+                        table.AddRow($"{method.DeclaringType?.Name}/{method.Name}", result?.ToString()?? "null");
+                    }
+                    catch (Exception e)
+                    {
+                        AnsiConsole.WriteException(e);
+                        table.AddRow($"{method.DeclaringType?.Name}/{method.Name}", "[red]Error[/]");
+                    }
+                }
+            }
+            
+            AnsiConsole.Write(table);
+                
+            break;
+        case Action.BenchMark:
+            BenchmarkRunner.Run(selected.ToArray(), 
+                DefaultConfig.Instance.
+                    WithOptions(ConfigOptions.JoinSummary)
+                    .WithOrderer(new DefaultOrderer(SummaryOrderPolicy.Declared, MethodOrderPolicy.Alphabetical)));
+            break;
+    }
+}
 
-// Console.WriteLine($"day05_1: {Day05.Part1()}");
-// Console.WriteLine($"day05_2: {Day05.Part2()}");
+return;
 
-// Console.WriteLine($"day06_1: {Day06.Part1()}");
-// Console.WriteLine($"day06_2: {Day06.Part2()}");
+static List<Type> PromptSolutions(List<Type> solutions)
+{
+    return AnsiConsole.Prompt(
+        new MultiSelectionPrompt<Type>()
+            .Title("Choose the solutions to run")
+            .PageSize(7)
+            .MoreChoicesText("[grey](Move up and down to reveal solutions)[/]")
+            .InstructionsText(
+                "[grey](Press [blue]<space>[/] to toggle a solution, " + 
+                "[green]<enter>[/] to accept)[/]")
+            .AddChoices(solutions));
+}
+static Action PromptAction()
+{
+    return AnsiConsole.Prompt(
+        new SelectionPrompt<Action>()
+            .Title("What do you want to do?")
+            .AddChoices(Enum.GetValues<Action>()));
+}
+internal enum Action
+{
+    ShowResults, BenchMark, Exit
+}
 
-// Console.WriteLine($"day07_1: {Day07.Part1()}");
-// Console.WriteLine($"day07_2: {Day07.Part2()}");
-
-// Console.WriteLine($"day08_1: {Day08.Part1()}");
-// Console.WriteLine($"day08_2: {Day08.Part2()}");
-
-// Console.WriteLine($"day09_1: {Day09.Part1()}");
-// Console.WriteLine($"day09_2: {Day09.Part2()}");
-
-// Console.WriteLine($"day10_1: {Day10.Part1()}");
-// Console.WriteLine($"day10_2: {Day10.Part2()}");
-
-// Console.WriteLine($"day11_1: {Day11.Part1()}");
-// Console.WriteLine($"day11_2: {Day11.Part2()}");
-
-// Console.WriteLine($"day12_1: {Day12.Part1()}");
-// Console.WriteLine($"day12_2: {Day12.Part2()}");
-
-// Console.WriteLine($"day13_1: {Day13.Part1()}");
-// Console.WriteLine($"day13_2: {Day13.Part2()}");
-
-// Console.WriteLine($"day14_1: {Day14.Part1()}");
-// var time = Day14.Part2V3();
-// Console.WriteLine($"day14_2: {time}");
-// Day14.ShowAtTime(time);
-
-Console.WriteLine($"day15_1: {Day15.Part1()}");
-Console.WriteLine($"day15_2: {Day15.Part2()}");

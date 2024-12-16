@@ -1,10 +1,13 @@
 using System.Text.RegularExpressions;
+using BenchmarkDotNet.Attributes;
 
 namespace Advent2024.Solutions;
 
-public class Day03
+[ShortRunJob]
+public class Day03: IDay
 {
-    public static int Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false)
     {
         
         using var file = Util.GetInputStream<Day03>(sample);
@@ -16,8 +19,8 @@ public class Day03
 
         return matches.Aggregate(0, (current , m) => current + int.Parse(m.Groups[1].Value) * int.Parse(m.Groups[2].Value));
     }
-
-    public static int Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
         using var file = Util.GetInputStream<Day03>(sample);
         string input = file.ReadToEnd();

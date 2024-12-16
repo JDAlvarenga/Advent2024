@@ -1,8 +1,12 @@
+using BenchmarkDotNet.Attributes;
+
 namespace Advent2024.Solutions;
 
-public class Day05
+[ShortRunJob]
+public class Day05: IDay
 {
-    public static int Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false)
     {
         using var file = Util.GetInputStream<Day05>(sample);
         
@@ -20,8 +24,8 @@ public class Day05
         }
         return sumMiddle;
     }
-    
-    public static int Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
         using var file = Util.GetInputStream<Day05>(sample);
         CreateRules(file, out var rules);

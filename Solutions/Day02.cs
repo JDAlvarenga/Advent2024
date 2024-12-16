@@ -1,8 +1,12 @@
+using BenchmarkDotNet.Attributes;
+
 namespace Advent2024.Solutions;
 
-public class Day02
+[ShortRunJob]
+public class Day02: IDay
 {
-    public static int Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false)
     {
         string? line = null;
         var totalSafe = 0;
@@ -18,8 +22,8 @@ public class Day02
         return totalSafe;
     }
     
-    
-    public static int Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
         string? line = null;
         var totalSafe = 0;

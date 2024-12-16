@@ -1,10 +1,13 @@
 using System.Numerics;
+using BenchmarkDotNet.Attributes;
 
 namespace Advent2024.Solutions;
 
-public class Day08
+[ShortRunJob]
+public class Day08: IDay
 {
-    public static int Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false)
     {
         GetAntennas(sample, out var antennasDictionary, out var mapSize);
         HashSet<Vector2> antiNodes = [];
@@ -25,7 +28,8 @@ public class Day08
         return antiNodes.Count;
     }
     
-    public static int Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
         GetAntennas(sample, out var antennasDictionary, out var mapSize);
         HashSet<Vector2> antiNodes = [];

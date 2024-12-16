@@ -1,10 +1,13 @@
 using System.Text.RegularExpressions;
+using BenchmarkDotNet.Attributes;
 using Point = Advent2024.Util.Point;
 namespace Advent2024.Solutions;
 
-public partial class Day13
+[ShortRunJob]
+public partial class Day13: IDay
 {
-    public static long Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public long Part1(bool sample = false)
     {
         long total = 0;
         foreach (var machine in GetClawMachines(sample))
@@ -24,7 +27,8 @@ public partial class Day13
         }
         return total;
     }
-    public static long Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public long Part2(bool sample = false)
     {
         long total = 0;
         foreach (var machine in GetClawMachines(sample))

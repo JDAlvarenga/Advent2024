@@ -1,8 +1,12 @@
+using BenchmarkDotNet.Attributes;
+
 namespace Advent2024.Solutions;
 
-public class Day11
+[ShortRunJob]
+public class Day11: IDay
 {
-    public static long Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public long Part1(bool sample = false)
     {
         var file = Util.GetInputStream<Day11>(sample);
         var stones = file.ReadLine()!.Split().Select(long.Parse).ToList();
@@ -11,7 +15,8 @@ public class Day11
         return stones.Sum(stone => StoneCount(new Key(stone, 25), cache));
     }
     
-    public static long Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public long Part2(bool sample = false)
     {
         var file = Util.GetInputStream<Day11>(sample);
         var stones = file.ReadLine()!.Split().Select(long.Parse).ToList();

@@ -1,14 +1,17 @@
 using System.Drawing;
+using BenchmarkDotNet.Attributes;
 
 namespace Advent2024.Solutions;
 
-public class Day04
+[ShortRunJob]
+public class Day04: IDay
 {
     private const string Word = "XMAS";
     
     private const string XWord = "MAS";
     private const int XWordMiddleIdx = 1;
-    public static int Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false)
     {
        GetMap(out var map, sample);
        var totalCount = 0;
@@ -47,8 +50,8 @@ public class Day04
         return true;
     }
 
-
-    public static int Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
         GetMap(out var map, sample);
         var totalCount = 0;

@@ -1,17 +1,20 @@
 using System.Text;
+using BenchmarkDotNet.Attributes;
 
 namespace Advent2024.Solutions;
 using Point = Util.Point;
 using Direction = Util.Direction;
 
-public class Day15
+[ShortRunJob]
+public class Day15: IDay
 {
     private const char Empty = '.';  
     private const char Wall = '#';  
     private const char Box = 'O';
     private const char Bot = '@';
     
-    public static int Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false)
     {
         // get dimensions if printing the warehouse
         // var (width, height) = GetWarehouse(sample, out var bot, out var walls, out var boxes, out var moves);
@@ -38,8 +41,8 @@ public class Day15
         
         return boxes.Sum(box => box.Y * 100 + box.X);
     }
-    
-    public static int Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
         // get dimensions if printing the warehouse
         // var (width, height) = GetWarehouse2(sample, out var bot, out var walls, out var boxes, out var moves);

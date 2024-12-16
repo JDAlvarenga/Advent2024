@@ -1,10 +1,13 @@
 using System.Collections;
+using BenchmarkDotNet.Attributes;
 using Point = Advent2024.Util.Point;
 namespace Advent2024.Solutions;
 
-public class Day10
+[ShortRunJob]
+public class Day10: IDay
 {
-    public static int Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false)
     {
         Dictionary<Point, byte> map = new();
         List<Point> peaks = [];
@@ -88,7 +91,8 @@ public class Day10
         }
     }
     
-    public static int Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
         Dictionary<Point, byte> map = new();
         List<Point> peaks = [];

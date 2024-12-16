@@ -1,13 +1,16 @@
+using BenchmarkDotNet.Attributes;
 using Point = Advent2024.Util.Point;
 using Direction = Advent2024.Util.Direction;
 
 namespace Advent2024.Solutions;
 
-public class Day06
+[ShortRunJob]
+public class Day06: IDay
 {
     private const char Empty = '.';
     private const char Obstacle = '#';
     private const char GuardN = '^';
+    [Benchmark, Arguments(false)]
     public static int Part1(bool sample = false)
     {
         GetInput(out var map, out var guard, sample);
@@ -26,8 +29,8 @@ public class Day06
         
         return visited.Count;
     }
-    
-    public static int Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
         GetInput(out var map, out var guard, sample);
         var visited = new Dictionary<Point, Direction>();

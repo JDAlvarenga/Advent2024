@@ -1,9 +1,12 @@
+using BenchmarkDotNet.Attributes;
+
 namespace Advent2024.Solutions;
 
-public class Day07
+[ShortRunJob]
+public class Day07: IDay
 {
-    
-    public static long Part1(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public long Part1(bool sample = false)
     {
         using var file = Util.GetInputStream<Day07>(sample);
         long totalSum = 0;
@@ -22,7 +25,8 @@ public class Day07
 
         return totalSum;
     }
-    public static long Part2(bool sample = false)
+    [Benchmark, Arguments(false)]
+    public long Part2(bool sample = false)
     {
         using var file = Util.GetInputStream<Day07>(sample);
         long totalSum = 0;

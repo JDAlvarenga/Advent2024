@@ -1,12 +1,16 @@
+using BenchmarkDotNet.Attributes;
 using Point = Advent2024.Util.Point;
 using Direction = Advent2024.Util.Direction;
 
 namespace Advent2024.Solutions;
 
-public class Day12
+[ShortRunJob]
+public class Day12: IDay
 {
-    public static int Part1(bool sample = false) => GetCost(CostBase, sample);
-    public static int Part2(bool sample = false) => GetCost(CostDiscount, sample);
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false) => GetCost(CostBase, sample);
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false) => GetCost(CostDiscount, sample);
     
     
 

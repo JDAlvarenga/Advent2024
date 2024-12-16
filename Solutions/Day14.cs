@@ -1,9 +1,10 @@
 using System.Text;
 using System.Text.RegularExpressions;
+using BenchmarkDotNet.Attributes;
 
 namespace Advent2024.Solutions;
-
-public partial class Day14
+[ShortRunJob]
+public partial class Day14: IDay
 {
     private const int Time = 100;
     private const int Width = 101;
@@ -11,7 +12,9 @@ public partial class Day14
     
     private const int WidthSample = 11;
     private const int HeightSample = 7;
-    public static int Part1(bool sample = false)
+    
+    [Benchmark, Arguments(false)]
+    public int Part1(bool sample = false)
     {
         var width = sample ? WidthSample : Width;
         var height = sample ? HeightSample : Height;
@@ -101,8 +104,12 @@ public partial class Day14
     //     }).MinBy(result => result.distance);
     //     return min.time;
     // }
-    public static int Part2V3()
+    
+    // Part2v3
+    [Benchmark, Arguments(false)]
+    public int Part2(bool sample = false)
     {
+        if (sample) throw new ArgumentException("Part 2 does not apply to sample input");
         var halfWidth = Width / 2;
         var halfHeight = Height / 2;
         var robots = GetRobots(false).ToList();
