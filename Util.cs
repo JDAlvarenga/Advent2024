@@ -75,11 +75,14 @@ public static class Util
             Y += delta.Y;
         }
 
-        public void Offset(int deltaX, int deltaY)
+        public void Offset(in int deltaX, in int deltaY)
         {
             X += deltaX;
             Y += deltaY;
         }
+
+        public Point OffsetCopy(in Point delta) => new (X + delta.X, Y + delta.Y);
+        public Point OffsetCopy(in int deltaX, in int deltaY) => new (X + deltaX, Y + deltaY);
 
         public Point MoveCopy(in Direction dir, in int spaces = 1)
         {
@@ -103,6 +106,7 @@ public static class Util
                     throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
             }
         }
+        public int ManhattanDistance(in Point point) => Math.Abs(point.X - X) + Math.Abs(point.Y - Y);
     }
     // public static Point MovePoint(Point point, in Direction dir, in int spaces = 1)
     // {
