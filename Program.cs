@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using Advent2024.Solutions;
 using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Order;
-using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 using Spectre.Console;
 
@@ -19,7 +19,7 @@ while (true)
     if (action == Action.Exit) return;
     
     var selected = PromptSolutions(solutionTypes);
-    if (selected.Count == 0) continue; // TODO message canceled no selecttion
+    if (selected.Count == 0) continue; // TODO: message canceled no selection
     
     switch (action)
     {
@@ -64,12 +64,12 @@ while (true)
             BenchmarkRunner.Run(selected.ToArray(), 
                 DefaultConfig.Instance.
                     WithOptions(ConfigOptions.JoinSummary)
+                    .AddDiagnoser(MemoryDiagnoser.Default)
                     .WithOrderer(new DefaultOrderer(SummaryOrderPolicy.Declared, MethodOrderPolicy.Alphabetical)));
             break;
     }
 }
 
-return;
 
 static List<Type> PromptSolutions(List<Type> solutions)
 {
