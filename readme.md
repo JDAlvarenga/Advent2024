@@ -28,3 +28,4 @@ The real inputs are to be placed in a `.txt` file directly inside `input/` with 
 | [Race Condition](https://adventofcode.com/2024/day/20)         | [day20.txt](input/samples/day20.txt) | [Day20.cs](Solutions/Day20.cs) |
 | [Keypad Conundrum](https://adventofcode.com/2024/day/21)       | [day21.txt](input/samples/day21.txt) | [Day21.cs](Solutions/Day21.cs) |
 | [Monkey Market](https://adventofcode.com/2024/day/22)          | [day22.txt](input/samples/day22.txt) | [Day22.cs](Solutions/Day22.cs) |
+| [LAN Party](https://adventofcode.com/2024/day/23)              | [day23.txt](input/samples/day23.txt) | [Day23.cs](Solutions/Day23.cs) |
