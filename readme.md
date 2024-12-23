@@ -25,3 +25,5 @@ The real inputs are to be placed in a `.txt` file directly inside `input/` with 
 | [Chronospatial Computer](https://adventofcode.com/2024/day/17) | [day17.txt](input/samples/day17.txt) | [Day17.cs](Solutions/Day17.cs) |
 | [RAM Run](https://adventofcode.com/2024/day/18)                | [day18.txt](input/samples/day18.txt) | [Day18.cs](Solutions/Day18.cs) |
 | [Linen Layout](https://adventofcode.com/2024/day/19)           | [day19.txt](input/samples/day19.txt) | [Day19.cs](Solutions/Day19.cs) |
+| [Race Condition](https://adventofcode.com/2024/day/20)         | [day20.txt](input/samples/day20.txt) | [Day20.cs](Solutions/Day20.cs) |
+| [Keypad Conundrum](https://adventofcode.com/2024/day/21)       | [day21.txt](input/samples/day21.txt) | [Day21.cs](Solutions/Day21.cs) |
